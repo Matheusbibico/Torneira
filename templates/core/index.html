@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero__content">
+    <span class="eyebrow">Metais sanitários premium</span>
+    <h1>Aureum Metais</h1>
+    <p>Torneiras, misturadores e acessórios com acabamento refinado para projetos que pedem presença discreta e durabilidade real.</p>
+    <div class="hero__actions">
+      <a class="btn btn-gold" href="{% url 'produtos:lista' %}">Comprar agora</a>
+      <a class="btn btn-light" href="{% url 'core:sobre' %}">Conhecer a marca</a>
+    </div>
+  </div>
+  <div class="hero__visual">
+    <div class="hero-product"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__heading">
+    <span class="eyebrow">Curadoria</span>
+    <h2>Categorias em destaque</h2>
+  </div>
+  <div class="category-grid">
+    {% for categoria in categorias %}
+      <a class="category-tile" href="{{ categoria.get_absolute_url }}">
+        {% if categoria.imagem %}
+          <img src="{{ categoria.imagem.url }}" alt="{{ categoria.nome }}">
+        {% endif %}
+        <span>{{ categoria.nome }}</span>
+      </a>
+    {% empty %}
+      <a class="category-tile" href="{% url 'produtos:lista' %}"><span>Torneiras</span></a>
+      <a class="category-tile" href="{% url 'produtos:lista' %}"><span>Misturadores</span></a>
+      <a class="category-tile" href="{% url 'produtos:lista' %}"><span>Acessórios</span></a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="section__heading">
+    <span class="eyebrow">Vitrine</span>
+    <h2>Peças para projetos elegantes</h2>
+  </div>
+  <div class="product-grid">
+    {% for produto in destaques|default:produtos %}
+      {% include "partials/produto_card.html" %}
+    {% empty %}
+      <p>Cadastre os primeiros produtos no admin para preencher esta vitrine.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

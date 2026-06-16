@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-title">
+  <span class="eyebrow">Catálogo</span>
+  <h1>{% if categoria %}{{ categoria.nome }}{% else %}Produtos Aureum{% endif %}</h1>
+</section>
+
+<section class="catalog-layout">
+  <aside class="filters">
+    <form method="get">
+      <label>Busca<input type="search" name="q" value="{{ request.GET.q }}"></label>
+      <label>Categoria
+        <select name="categoria">
+          <option value="">Todas</option>
+          {% for categoria in categorias %}
+            <option value="{{ categoria.slug }}" {% if request.GET.categoria == categoria.slug %}selected{% endif %}>{{ categoria.nome }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Cor<input type="text" name="cor" value="{{ request.GET.cor }}" placeholder="Dourado, preto..."></label>
+      <label>Acabamento<input type="text" name="acabamento" value="{{ request.GET.acabamento }}" placeholder="Escovado..."></label>
+      <label>Preço até<input type="number" name="preco_max" value="{{ request.GET.preco_max }}" min="0" step="0.01"></label>
+      <button class="btn btn-dark" type="submit">Filtrar</button>
+    </form>
+  </aside>
+  <div class="product-grid">
+    {% for produto in produtos %}
+      {% include "partials/produto_card.html" %}
+    {% empty %}
+      <p>Nenhum produto encontrado.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

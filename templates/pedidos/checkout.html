@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-title">
+  <span class="eyebrow">Checkout</span>
+  <h1>Finalizar pedido</h1>
+</section>
+
+<section class="checkout-layout">
+  <form class="checkout-form" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+      <label>
+        {{ field.label }}
+        {{ field }}
+        {{ field.errors }}
+      </label>
+    {% endfor %}
+    <button class="btn btn-gold" type="submit">Salvar pedido</button>
+  </form>
+  <aside class="order-summary">
+    <span class="eyebrow">Itens</span>
+    {% for item in itens %}
+      <div><span>{{ item.quantidade }}x {{ item.produto.nome }}</span><strong>R$ {{ item.subtotal }}</strong></div>
+    {% endfor %}
+    <hr>
+    <div><span>Subtotal</span><strong>R$ {{ subtotal }}</strong></div>
+    <div><span>Frete</span><strong>R$ {{ frete }}</strong></div>
+    <div><span>Total</span><strong>R$ {{ total }}</strong></div>
+  </aside>
+</section>
+{% endblock %}

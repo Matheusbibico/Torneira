@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+staticfiles/
+media/*
+!media/.gitkeep
+work/pycache/
+.DS_Store
+postgres_data/

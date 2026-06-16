@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Misturador Monocomando Aureum Dourado - Peça esculpida em latão de alta pureza com acabamento em ouro escovado. Compre metais sanitários de luxo.">
+  <title>Misturador Monocomando Aureum Dourado | Aureum Metais</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="product-page">
+
+  <!-- --- TOAST NOTIFICATIONS CONTAINER --- -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- --- HEADER / NAVIGATION BAR --- -->
+  <header class="scrolled"> <!-- Force header styling on inner pages -->
+    <div class="container">
+      <!-- Mobile Hamburger -->
+      <a href="#" class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo" id="logo-brand">
+        AUREUM<span>.</span>
+      </a>
+
+      <!-- Menu Items -->
+      <ul class="nav-links">
+        <li><a href="index.html#categorias">Coleções</a></li>
+        <li><a href="index.html#produtos">Produtos</a></li>
+        <li><a href="index.html#ambientes">Ambientes</a></li>
+        <li><a href="produto.html" style="color: var(--color-accent);">Destaque</a></li>
+      </ul>
+
+      <!-- Action Utilities -->
+      <div class="header-actions">
+        <button class="header-btn" id="search-btn" aria-label="Pesquisar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <button class="header-btn" id="cart-toggle-btn" aria-label="Abrir Sacola">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span class="cart-count" id="cart-count-nav" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- --- PRODUCT DETAIL VIEW SECTION --- -->
+  <main class="container" style="margin-bottom: 8rem;">
+    <div class="product-detail-layout">
+      <!-- Left Column: Gallery -->
+      <div class="product-gallery">
+        <!-- Thumbnails Column -->
+        <div class="gallery-thumbnails">
+          <div class="gallery-thumb active" id="thumb-1">
+            <img src="img/prod_misturador_dourado.png" alt="Misturador Dourado Detalhe">
+          </div>
+          <div class="gallery-thumb" id="thumb-2">
+            <img src="img/prod_torneira_parede.png" alt="Misturador Preto Parede Detalhe">
+          </div>
+          <div class="gallery-thumb" id="thumb-3">
+            <img src="img/hero_ambient.png" alt="Misturador Dourado no Ambiente">
+          </div>
+          <div class="gallery-thumb" id="thumb-4">
+            <img src="img/env_kitchen.png" alt="Cozinha Integrada Detalhe">
+          </div>
+        </div>
+
+        <!-- Main Viewport -->
+        <div class="main-image-viewport" id="main-image-viewport">
+          <img src="img/prod_misturador_dourado.png" alt="Misturador Monocomando Aureum Dourado" id="main-product-img">
+        </div>
+      </div>
+
+      <!-- Right Column: Product details & cart additions -->
+      <div class="product-details">
+        <div class="product-meta">
+          <span class="product-category" style="font-size:0.8rem;">Misturador de Bancada</span>
+          <span class="product-ref">REF: AU-8092-D</span>
+        </div>
+        <h1>Misturador Monocomando Aureum</h1>
+        
+        <!-- Ratings -->
+        <div class="product-rating">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          <span style="color: var(--color-text-muted); font-size: 0.8rem; margin-left: 0.5rem; font-weight: 300;">(42 avaliações dos arquitetos)</span>
+        </div>
+
+        <!-- Pricing box -->
+        <div class="price-box">
+          <div class="price-main">R$ 1.890,00</div>
+          <div class="price-installments-lg">Ou em até <span>10x de R$ 189,00 sem juros</span> no cartão</div>
+        </div>
+
+        <!-- Configuration Selector -->
+        <div class="product-config">
+          <div>
+            <div class="config-title">Acabamento: <span id="config-variant-text" style="font-weight: 400; color: var(--color-accent);">Dourado Escovado</span></div>
+            <div class="finish-selectors">
+              <!-- Brushed Gold -->
+              <button class="finish-btn gold active" data-variant="gold" data-variant-name="Dourado Escovado" aria-label="Acabamento Dourado Escovado"></button>
+              <!-- Matte Black -->
+              <button class="finish-btn black" data-variant="black" data-variant-name="Black Matte" aria-label="Acabamento Black Matte"></button>
+              <!-- Chrome -->
+              <button class="finish-btn chrome" data-variant="chrome" data-variant-name="Cromo Polido" aria-label="Acabamento Cromo Polido"></button>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div>
+            <div class="config-title">Quantidade</div>
+            <div class="qty-selector">
+              <button class="qty-btn" id="qty-minus" aria-label="Diminuir quantidade">-</button>
+              <input type="number" value="1" min="1" class="qty-input" id="qty-input" readonly>
+              <button class="qty-btn" id="qty-plus" aria-label="Aumentar quantidade">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call To Action -->
+        <button class="btn-add-cart" id="add-to-cart-btn" data-product-id="prod_gold_mixer" data-product-name="Misturador Monocomando Aureum" data-product-price="1890.00">Adicionar à Sacola</button>
+
+        <!-- Specifications Tab Accordion -->
+        <div class="spec-accordion">
+          <!-- Accordion 1: Specs -->
+          <div class="spec-item active">
+            <button class="spec-header">Especificações Técnicas <span class="icon">+</span></button>
+            <div class="spec-content">
+              <table class="spec-table">
+                <tr>
+                  <td class="label">Material</td>
+                  <td class="value">Latão maciço livre de chumbo (H59-1)</td>
+                </tr>
+                <tr>
+                  <td class="label">Mecanismo</td>
+                  <td class="value">Cartucho cerâmico Sedal (Espanha) - 500.000 ciclos</td>
+                </tr>
+                <tr>
+                  <td class="label">Pressão Mínima</td>
+                  <td class="value">5 M.C.A (Metros de Coluna d'Água)</td>
+                </tr>
+                <tr>
+                  <td class="label">Furação Bancada</td>
+                  <td class="value">Ø 35mm</td>
+                </tr>
+                <tr>
+                  <td class="label">Tipo de Jato</td>
+                  <td class="value">Aerado suave (com economia de até 40% de água)</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Accordion 2: Detailing -->
+          <div class="spec-item">
+            <button class="spec-header">Acabamento e Garantia <span class="icon">+</span></button>
+            <div class="spec-content">
+              <table class="spec-table">
+                <tr>
+                  <td class="label">Tecnologia de Cor</td>
+                  <td class="value">Deposição física de vapor (PVD) anti-riscos</td>
+                </tr>
+                <tr>
+                  <td class="label">Garantia</td>
+                  <td class="value">10 anos na estrutura metálica / 2 anos no mecanismo cerâmico</td>
+                </tr>
+                <tr>
+                  <td class="label">Itens Inclusos</td>
+                  <td class="value">Flexíveis trançados de aço inox de 60cm, anéis de vedação e kit de fixação rápida</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Accordion 3: Shipping -->
+          <div class="spec-item">
+            <button class="spec-header">Prazos e Envio <span class="icon">+</span></button>
+            <div class="spec-content">
+              <table class="spec-table">
+                <tr>
+                  <td class="label">Prazo de Envio</td>
+                  <td class="value">Despacho em até 24h úteis para produtos em estoque</td>
+                </tr>
+                <tr>
+                  <td class="label">Entrega Rápida</td>
+                  <td class="value">Disponível via transportadora aérea ou rodoviária expressa</td>
+                </tr>
+                <tr>
+                  <td class="label">Frete Grátis</td>
+                  <td class="value">Elegível para compras acima de R$ 3.000,00 para todo o Brasil</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- --- RELATED PRODUCTS GRID --- -->
+  <section class="section-spacing" style="background-color: var(--color-bg-light); border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 4rem;">
+        <span class="section-badge">Sugestões de Projeto</span>
+        <h2 class="section-title">Compre Junto</h2>
+      </div>
+
+      <div class="products-grid">
+        <!-- Related Product 1 -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <a href="produto.html"><img src="img/prod_gourmet_black.png" alt="Torneira Gourmet Black" class="product-img"></a>
+            <div class="product-actions">
+              <button class="btn-buy-card" onclick="addToCartGlobal('prod_gourmet_black', 'Torneira Gourmet Black Matte', 1450, 'img/prod_gourmet_black.png', 'Black Matte')">Comprar</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Cozinha</span>
+            <a href="produto.html"><h3 class="product-name">Torneira Gourmet Black Matte</h3></a>
+            <div class="product-rating">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="product-price">R$ 1.450,00</div>
+          </div>
+        </div>
+
+        <!-- Related Product 2 -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <a href="produto.html"><img src="img/prod_ducha_quadrada.png" alt="Ducha de Teto" class="product-img"></a>
+            <div class="product-actions">
+              <button class="btn-buy-card" onclick="addToCartGlobal('prod_shower_gold', 'Ducha de Teto Quadrada', 2390, 'img/prod_ducha_quadrada.png', 'Brushed Gold')">Comprar</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Duchas</span>
+            <a href="produto.html"><h3 class="product-name">Ducha de Teto Quadrada Brushed Gold</h3></a>
+            <div class="product-rating">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+            </div>
+            <div class="product-price">R$ 2.390,00</div>
+          </div>
+        </div>
+
+        <!-- Related Product 3 -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <a href="produto.html"><img src="img/prod_torneira_parede.png" alt="Torneira Minimalista" class="product-img"></a>
+            <div class="product-actions">
+              <button class="btn-buy-card" onclick="addToCartGlobal('prod_wall_black', 'Torneira Minimalista Parede', 1120, 'img/prod_torneira_parede.png', 'Black Matte')">Comprar</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Banheiro</span>
+            <a href="produto.html"><h3 class="product-name">Torneira Minimalista Parede</h3></a>
+            <div class="product-rating">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="product-price">R$ 1.120,00</div>
+          </div>
+        </div>
+
+        <!-- Related Product 4 -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <!-- Reuse another image as accessories representation -->
+            <a href="produto.html"><img src="img/hero_ambient.png" alt="Towel ring accessory mockup" class="product-img"></a>
+            <div class="product-actions">
+              <button class="btn-buy-card" onclick="addToCartGlobal('prod_acc_gold', 'Porta Toalha Dourado', 380, 'img/hero_ambient.png', 'Dourado Escovado')">Comprar</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Acessórios</span>
+            <a href="produto.html"><h3 class="product-name">Porta Toalha de Argola Aureum</h3></a>
+            <div class="product-rating">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="product-price">R$ 380,00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <a href="index.html" class="footer-logo">AUREUM<span>.</span></a>
+          <p>Metais sanitários que equilibram perfeitamente arte, rigor tecnológico e sofisticação.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link flex-center" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" class="footer-social-link flex-center" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 22a9 9 0 0 1-2.56-5.46C5.07 13 7.84 8.78 11.75 8.78c1.86 0 3 .89 3 2.5 0 2.21-1.34 4-2.82 4a1.86 1.86 0 0 1-1.93-1.55c0-.13-.07-.3-.07-.3l-1 4.1C8.32 20 6.64 22 6.64 22c5.38 0 8.36-4.5 8.36-8.9A6.73 6.73 0 0 0 8.25 6.4a7 7 0 0 0-7 7.07 6.42 6.42 0 0 0 2.45 5.34c.4.32.77.16.89-.3s.38-1.5.5-2c.08-.32.05-.47-.19-.76a4.42 4.42 0 0 1-1-2.9A4.75 4.75 0 0 1 8.25 8.25c3 0 4.75 2 4.75 4.88a5 5 0 0 1-2.83 4.67 2.06 2.06 0 0 1-2-2.18c0-.62.3-1.21.3-1.21l1-3.8c.2-.76-.05-1.55-.73-1.55A1.5 1.5 0 0 0 7.3 11a7 7 0 0 0-1.2 3.5c0 1.25.68 2.2 2 2.2a3 3 0 0 0 .9-.13L8 22z"></path></svg></a>
+            <a href="#" class="footer-social-link flex-center" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Institucional</h4>
+          <ul class="footer-links">
+            <li><a href="#">Sobre a Aureum</a></li>
+            <li><a href="#">Projetos Realizados</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Showroom Físico</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Suporte e Trocas</h4>
+          <ul class="footer-links">
+            <li><a href="#">Política de Trocas</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Garantia Contratual</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4 class="footer-title">Newsletter</h4>
+          <p>Receba em primeira mão lançamentos de coleções e conteúdos técnicos de arquitetura.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Inscrito com sucesso!'); this.reset();">
+            <input type="email" placeholder="Seu e-mail profissional" class="newsletter-input" required aria-label="E-mail profissional para newsletter">
+            <button type="submit" class="newsletter-btn">Enviar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aureum Metais Sanitários Ltda. Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+        <p>Design Premium inspirado em referências atemporais.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- CART SIDE DRAWER PANEL --- -->
+  <div class="cart-drawer-backdrop" id="cart-backdrop"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2>Sacola de Compras</h2>
+      <button class="cart-close-btn" id="cart-close-btn" aria-label="Fechar Sacola">&times;</button>
+    </div>
+    <!-- Cart Items dynamic container -->
+    <div class="cart-drawer-content" id="cart-drawer-content">
+      <!-- Injected by JS -->
+    </div>
+    <!-- Summary and checkout -->
+    <div class="cart-drawer-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-total-val">R$ 0,00</span>
+      </div>
+      <div class="cart-summary-row" style="font-size: 0.8rem; color: var(--color-text-muted);">
+        <span>Frete</span>
+        <span>Calculado no Checkout</span>
+      </div>
+      <button class="btn-checkout" id="checkout-btn" onclick="alert('Funcionalidade de pagamento simulada. Obrigado pela preferência!');">Finalizar Pedido</button>
+    </div>
+  </div>
+
+  <!-- --- MOBILE DRAWER NAVIGATION MENU --- -->
+  <div class="mobile-nav-drawer" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <span class="logo">AUREUM<span>.</span></span>
+      <button class="cart-close-btn" id="mobile-nav-close" aria-label="Fechar Menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html#categorias" onclick="document.getElementById('mobile-nav-close').click();">Coleções</a></li>
+      <li><a href="index.html#produtos" onclick="document.getElementById('mobile-nav-close').click();">Produtos</a></li>
+      <li><a href="index.html#ambientes" onclick="document.getElementById('mobile-nav-close').click();">Ambientes</a></li>
+      <li><a href="produto.html">Produto Destaque</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <div class="mobile-nav-socials">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-title">
+  <span class="eyebrow">Pedido</span>
+  <h1>Seu carrinho</h1>
+</section>
+
+<section class="cart-page">
+  <div class="cart-lines">
+    {% for item in itens %}
+      <article class="cart-line">
+        <div>
+          <strong>{{ item.produto.nome }}</strong>
+          <span>R$ {{ item.preco }}</span>
+        </div>
+        <form action="{% url 'carrinho:atualizar' item.produto.id %}" method="post">
+          {% csrf_token %}
+          <input type="number" name="quantidade" min="0" max="{{ item.produto.estoque }}" value="{{ item.quantidade }}">
+          <button type="submit">Atualizar</button>
+        </form>
+        <strong>R$ {{ item.subtotal }}</strong>
+        <form action="{% url 'carrinho:remover' item.produto.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="link-button">Remover</button>
+        </form>
+      </article>
+    {% empty %}
+      <p>Seu carrinho está vazio.</p>
+    {% endfor %}
+  </div>
+  <aside class="order-summary">
+    <span class="eyebrow">Resumo</span>
+    <div><span>Subtotal</span><strong>R$ {{ subtotal }}</strong></div>
+    <div><span>Frete</span><strong>Calculado no checkout</strong></div>
+    <a class="btn btn-gold" href="{% url 'pedidos:checkout' %}">Finalizar pedido</a>
+  </aside>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+<article class="product-card">
+  <a class="product-card__media" href="{{ produto.get_absolute_url }}">
+    {% if produto.imagem_principal %}
+      <img src="{{ produto.imagem_principal.url }}" alt="{{ produto.nome }}">
+    {% else %}
+      <div class="image-placeholder">Aureum</div>
+    {% endif %}
+  </a>
+  <div class="product-card__content">
+    <span>{{ produto.categoria.nome }}</span>
+    <h3><a href="{{ produto.get_absolute_url }}">{{ produto.nome }}</a></h3>
+    <p>{{ produto.descricao_curta }}</p>
+    <div class="product-card__price">
+      {% if produto.preco_promocional %}
+        <del>R$ {{ produto.preco }}</del>
+      {% endif %}
+      <strong>R$ {{ produto.preco_atual }}</strong>
+    </div>
+    <form action="{% url 'carrinho:adicionar' produto.id %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <button class="btn btn-dark" type="submit" {% if not produto.disponivel %}disabled{% endif %}>
+        {% if produto.disponivel %}Adicionar{% else %}Indisponível{% endif %}
+      </button>
+    </form>
+  </div>
+</article>

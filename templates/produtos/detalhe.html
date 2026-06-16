@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="product-detail">
+  <div class="gallery">
+    <div class="gallery__main" data-zoom>
+      {% if produto.imagem_principal %}
+        <img src="{{ produto.imagem_principal.url }}" alt="{{ produto.nome }}">
+      {% else %}
+        <div class="image-placeholder">Aureum</div>
+      {% endif %}
+    </div>
+    <div class="gallery__thumbs">
+      {% for imagem in produto.imagens.all %}
+        <img src="{{ imagem.imagem.url }}" alt="{{ imagem.alt|default:produto.nome }}" data-thumb>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="product-info">
+    <span class="eyebrow">{{ produto.categoria.nome }}</span>
+    <h1>{{ produto.nome }}</h1>
+    <p>{{ produto.descricao_curta }}</p>
+    <div class="price-block">
+      {% if produto.preco_promocional %}
+        <del>R$ {{ produto.preco }}</del>
+      {% endif %}
+      <strong>R$ {{ produto.preco_atual }}</strong>
+    </div>
+    <form class="buy-box" action="{% url 'carrinho:adicionar' produto.id %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <label>Quantidade<input type="number" name="quantidade" min="1" max="{{ produto.estoque }}" value="1"></label>
+      <button class="btn btn-gold" type="submit" {% if not produto.disponivel %}disabled{% endif %}>
+        {% if produto.disponivel %}Adicionar ao carrinho{% else %}Produto indisponível{% endif %}
+      </button>
+    </form>
+    <div class="accordion">
+      <details open>
+        <summary>Descrição</summary>
+        <p>{{ produto.descricao_completa }}</p>
+      </details>
+      <details>
+        <summary>Especificações</summary>
+        <ul>
+          <li>Acabamento: {{ produto.acabamento|default:"Sob consulta" }}</li>
+          <li>Material: {{ produto.material|default:"Sob consulta" }}</li>
+          <li>Cor: {{ produto.cor|default:"Sob consulta" }}</li>
+          <li>Garantia: {{ produto.garantia|default:"Sob consulta" }}</li>
+          <li>Estoque: {{ produto.estoque }}</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__heading">
+    <span class="eyebrow">Combine com</span>
+    <h2>Produtos relacionados</h2>
+  </div>
+  <div class="product-grid">
+    {% for produto in relacionados %}
+      {% include "partials/produto_card.html" %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

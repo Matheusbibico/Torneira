@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="thank-you">
+  <span class="eyebrow">Pedido recebido</span>
+  <h1>Obrigado, {{ pedido.cliente.nome }}.</h1>
+  <p>Seu pedido #{{ pedido.id }} foi registrado. Em breve a equipe Aureum entrará em contato para pagamento, envio e acompanhamento.</p>
+  <a class="btn btn-dark" href="{% url 'produtos:lista' %}">Continuar comprando</a>
+</section>
+{% endblock %}
