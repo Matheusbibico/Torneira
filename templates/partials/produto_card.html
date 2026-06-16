@@ -1,9 +1,10 @@
+{% load static %}
 <article class="product-card">
   <a class="product-card__media" href="{{ produto.get_absolute_url }}">
     {% if produto.imagem_principal %}
       <img src="{{ produto.imagem_principal.url }}" alt="{{ produto.nome }}">
     {% else %}
-      <div class="image-placeholder">Aureum</div>
+      <img src="{% static produto.imagem_padrao %}" alt="{{ produto.nome }}">
     {% endif %}
   </a>
   <div class="product-card__content">

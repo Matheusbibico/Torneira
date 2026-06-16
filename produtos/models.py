@@ -19,6 +19,18 @@ class Categoria(models.Model):
     def get_absolute_url(self):
         return reverse("produtos:categoria", kwargs={"slug": self.slug})
 
+    @property
+    def imagem_padrao(self):
+        imagens = {
+            "torneiras": "img/cat_banheiro.png",
+            "misturadores": "img/cat_misturador.png",
+            "acessorios": "img/cat_acessorios.png",
+            "cozinha": "img/cat_cozinha.png",
+            "duchas": "img/cat_ducha.png",
+            "lancamentos": "img/cat_lancamentos.png",
+        }
+        return imagens.get(self.slug, "img/cat_lancamentos.png")
+
 
 class Produto(models.Model):
     nome = models.CharField(max_length=180)
@@ -56,6 +68,20 @@ class Produto(models.Model):
 
     def get_absolute_url(self):
         return reverse("produtos:detalhe", kwargs={"slug": self.slug})
+
+    @property
+    def imagem_padrao(self):
+        imagens = {
+            "torneira-aurea-monocomando": "img/prod_misturador_dourado.png",
+            "misturador-grafite-duo": "img/prod_gourmet_black.png",
+            "ducha-higienica-linea": "img/prod_ducha_quadrada.png",
+        }
+        por_categoria = {
+            "torneiras": "img/prod_torneira_parede.png",
+            "misturadores": "img/prod_misturador_dourado.png",
+            "acessorios": "img/prod_ducha_quadrada.png",
+        }
+        return imagens.get(self.slug, por_categoria.get(self.categoria.slug, "img/prod_misturador_dourado.png"))
 
 
 class ProdutoImagem(models.Model):

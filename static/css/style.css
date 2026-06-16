@@ -85,6 +85,13 @@ img { display: block; max-width: 100%; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
 .hero__visual { display: grid; place-items: center; min-height: 420px; }
+.hero-photo {
+  width: min(520px, 100%);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .26);
+}
 .hero-product {
   width: min(310px, 62vw);
   aspect-ratio: 1 / 1.35;
@@ -127,10 +134,32 @@ img { display: block; max-width: 100%; }
   min-height: 160px;
   display: flex;
   align-items: end;
+  position: relative;
+  overflow: hidden;
   padding: 20px;
   border: 1px solid var(--line);
   background: linear-gradient(145deg, #fff, #eee6db);
   font-weight: 800;
+}
+.category-tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+.category-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(23, 23, 23, .72));
+}
+.category-tile:hover img { transform: scale(1.04); }
+.category-tile span {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
 }
 
 .product-card { background: var(--paper); border: 1px solid var(--line); }
